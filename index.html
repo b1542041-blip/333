@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b18">
+  <meta name="description" content="可調整速度與視角的互動式太陽系模擬器。">
+  <title>星際漫遊｜互動式太陽系</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="星際漫遊首頁"><span class="brand-mark">✦</span><span>星際漫遊</span></a>
+      <span class="topbar-note"><span class="live-dot"></span>太陽系即時模擬</span>
+    </header>
+
+    <section class="intro" id="top" aria-labelledby="page-title">
+      <p class="eyebrow"><span class="eyebrow-line"></span>THE SOLAR SYSTEM <span class="eyebrow-line"></span></p>
+      <h1 id="page-title">我們的<span>太陽系</span></h1>
+      <p class="intro-copy">從太陽出發，探索八大行星的星際旅程。</p>
+    </section>
+
+    <section class="universe" aria-label="太陽系行星公轉模擬">
+      <div class="space-scene" id="space-scene">
+        <div class="nebula nebula-one" aria-hidden="true"></div>
+        <div class="nebula nebula-two" aria-hidden="true"></div>
+        <div class="star-field" id="star-field" aria-hidden="true"></div>
+        <div class="solar-system" id="solar-system" aria-label="太陽和八大行星">
+          <div class="sun-wrap"><div class="sun" role="img" aria-label="太陽"></div><span class="sun-label">太陽</span></div>
+          <div class="orbit orbit-1"><div class="planet mercury" data-name="水星" tabindex="0" role="button" aria-label="水星"></div></div>
+          <div class="orbit orbit-2"><div class="planet venus" data-name="金星" tabindex="0" role="button" aria-label="金星"></div></div>
+          <div class="orbit orbit-3"><div class="planet earth" data-name="地球" tabindex="0" role="button" aria-label="地球"></div></div>
+          <div class="orbit orbit-4"><div class="planet mars" data-name="火星" tabindex="0" role="button" aria-label="火星"></div></div>
+          <div class="orbit orbit-5"><div class="planet jupiter" data-name="木星" tabindex="0" role="button" aria-label="木星"></div></div>
+          <div class="orbit orbit-6"><div class="planet saturn" data-name="土星" tabindex="0" role="button" aria-label="土星"><span aria-hidden="true"></span></div></div>
+          <div class="orbit orbit-7"><div class="planet uranus" data-name="天王星" tabindex="0" role="button" aria-label="天王星"></div></div>
+          <div class="orbit orbit-8"><div class="planet neptune" data-name="海王星" tabindex="0" role="button" aria-label="海王星"></div></div>
+        </div>
+        <div class="scene-caption"><span class="caption-dot"></span>太陽系 · 由內向外排列</div>
+        <div class="planet-tooltip" id="planet-tooltip" role="status" aria-live="polite"></div>
+      </div>
+
+      <aside class="info-panel" aria-label="模擬器控制與行星資訊">
+        <div class="panel-heading"><div><p class="panel-kicker">FLIGHT CONTROLS</p><h2>航行控制</h2></div><span class="control-icon" aria-hidden="true">⌘</span></div>
+        <div class="control-block">
+          <div class="control-label"><label for="speed-control">公轉速度</label><span class="speed-value" id="speed-value">1.0×</span></div>
+          <input id="speed-control" type="range" min="0.1" max="5" step="0.1" value="1" aria-label="調整行星公轉速度">
+          <div class="range-labels"><span>靜止</span><span>巡航</span><span>加速</span></div>
+        </div>
+        <div class="control-buttons">
+          <button class="pause-button" id="pause-button" type="button" aria-pressed="false"><span class="pause-symbol" aria-hidden="true">Ⅱ</span><span id="pause-label">暫停公轉</span></button>
+          <button class="reset-button" id="reset-button" type="button" aria-label="重設模擬器">重設</button>
+        </div>
+        <div class="panel-divider"></div>
+        <div class="planet-section-title"><h3>行星圖鑑</h3><span>8 OBJECTS</span></div>
+        <div class="planet-list" id="planet-list" aria-label="選擇行星查看資訊">
+          <button class="planet-card" data-planet="mercury" type="button"><i class="planet-swatch mercury-swatch"></i><span class="card-name">水星</span><span class="card-meta">MERCURY</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="venus" type="button"><i class="planet-swatch venus-swatch"></i><span class="card-name">金星</span><span class="card-meta">VENUS</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="earth" type="button"><i class="planet-swatch earth-swatch"></i><span class="card-name">地球</span><span class="card-meta">EARTH</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="mars" type="button"><i class="planet-swatch mars-swatch"></i><span class="card-name">火星</span><span class="card-meta">MARS</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="jupiter" type="button"><i class="planet-swatch jupiter-swatch"></i><span class="card-name">木星</span><span class="card-meta">JUPITER</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="saturn" type="button"><i class="planet-swatch saturn-swatch"></i><span class="card-name">土星</span><span class="card-meta">SATURN</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="uranus" type="button"><i class="planet-swatch uranus-swatch"></i><span class="card-name">天王星</span><span class="card-meta">URANUS</span><span class="card-chevron">›</span></button>
+          <button class="planet-card" data-planet="neptune" type="button"><i class="planet-swatch neptune-swatch"></i><span class="card-name">海王星</span><span class="card-meta">NEPTUNE</span><span class="card-chevron">›</span></button>
+        </div>
+        <div class="planet-detail" id="planet-detail" aria-live="polite"><span class="detail-star" aria-hidden="true">✦</span><span>點選行星，展開星球檔案</span></div>
+      </aside>
+    </section>
+
+    <footer class="footer"><span>探索宇宙，從我們的家開始。</span><span class="footer-right">SOLAR SYSTEM SIMULATOR <span>·</span> 2025</span></footer>
+  </main>
+</body>
+</html>
